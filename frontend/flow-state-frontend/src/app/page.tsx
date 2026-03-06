@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { getLoops } from '../lib/api';
+import Metronome from '../components/Metronome';
 
 // Define what a Loop looks like based on your Django model
 interface AudioLoop {
@@ -36,6 +37,7 @@ export default function Home() {
         <h1 className="text-5xl font-black tracking-tighter text-slate-900">FLOW STATE</h1>
         <p className="text-slate-500 mt-2">Direct access to your Django audio library.</p>
       </header>
+      <Metronome />
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {loops.map((loop) => (
