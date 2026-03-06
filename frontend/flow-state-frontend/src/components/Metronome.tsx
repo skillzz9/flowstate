@@ -42,17 +42,19 @@ export default function Metronome() {
   }, []);
 
   const toggleMetronome = async () => {
-    if (Tone.getContext().state !== 'running') await Tone.start();
+  if (Tone.getContext().state !== 'running') await Tone.start();
 
-    if (isPlaying) {
-      Tone.getTransport().stop();
-      beatCount.current = 0; // Reset count
-    } else {
-      Tone.getTransport().bpm.value = bpm;
-      Tone.getTransport().start();
-    }
-    setIsPlaying(!isPlaying);
-  };
+  if (isPlaying) {
+    Tone.getTransport().stop();
+    // Reset the position so the next start is at the absolute beginning
+    Tone.getTransport().position = 0; 
+  } else {
+    Tone.getTransport().bpm.value = bpm;
+    // Start the clock! Any "queued" loops will now trigger on the next downbeat.
+    Tone.getTransport().start();
+  }
+  setIsPlaying(!isPlaying);
+};
 
   const handleBpmChange = (newBpm: number) => {
     setBpm(newBpm);
