@@ -17,7 +17,8 @@ export default function LoopSlot({ id, activeLoop, isWarpEnabled }: any) {
           <SyncedLoop 
             loopUrl={activeLoop.audio_file} 
             loopName={activeLoop.name} 
-            isWarpEnabled={isWarpEnabled} 
+            isWarpEnabled={isWarpEnabled}
+            originalBpm={activeLoop.bpm}
           />
         </div>
       ) : (
