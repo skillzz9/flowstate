@@ -95,11 +95,8 @@ export default function SyncedLoop({
         // 'time' is the exact moment the audio engine hits the first sample
         offsetRef.current = time; 
         
-        // Use Tone.Draw to sync the state update with the next animation frame
-        Tone.Draw.schedule(() => {
-          setIsPlaying(true);
-          setIsQueued(false);
-        }, time);
+        setIsPlaying(true);
+        setIsQueued(false);
       }, "@1n");
     }
   };
